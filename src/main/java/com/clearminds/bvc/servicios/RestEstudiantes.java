@@ -3,6 +3,7 @@ package com.clearminds.bvc.servicios;
 import java.sql.SQLException;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
@@ -48,6 +49,40 @@ public class RestEstudiantes {
 			}
 	
 
+	}
+	@Path("/eliminar")
+	@POST
+	@Consumes({MediaType.APPLICATION_JSON})
+	
+	public void eliminar(Estudiante estudiante){
+		ServicioEstudiante serest = new ServicioEstudiante();
+		try {
+			serest.eliminarEstudiante(estudiante);
+		} catch (BDDException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@Path("/leer")
+	@GET
+	@Consumes({MediaType.APPLICATION_JSON})
+	
+	public void leerTabla(Estudiante estudiante){
+		ServicioEstudiante serest = new ServicioEstudiante();
+		try {
+			serest.leerTabla(estudiante);
+		} catch (BDDException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
